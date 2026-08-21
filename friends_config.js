@@ -69,7 +69,12 @@ const friendsWishes = [
     name: "Daksha & Shetty 💖✨",
     wish: "Happy Birthday Shravani🎂❤️, may you both create cute short babies together.\n   Happy birthday Shravani❤️🎂✨. May You find direction in your life with your directionless boyfriend",
     photo: "assets/Daksha/PHOTO-2026-08-21-18-41-32.jpg",
-    secondPhoto: "assets/Daksha/PHOTO-2026-08-21-18-56-35.jpg",
     link: "daksha.html"
+  },
+  {
+    name: "Dhruthi 🌸",
+    wish: "Happy Birthday! 🎉 Hope you have a really great day and an even better year ahead. You've been someone who's easy to talk to and fun to be around. Wishing you lots of happiness and good memories!",
+    photo: "assets/Dhruthi/PHOTO-2026-08-21-20-51-17 2.jpg",
+    link: "dhruthi.html"
   }
 ];

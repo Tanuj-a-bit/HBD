@@ -801,6 +801,12 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    /* Mobile browsers (iOS Safari/Android Chrome) do not support background-attachment: fixed properly */
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center top;
+  }
   .booklet {
     height: 350px;
   }
