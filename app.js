@@ -12,12 +12,12 @@ function initParticles() {
   const container = document.getElementById("particle-container");
   const heartSymbols = ["❤️", "💖", "💝", "💕", "🌸"];
   let counter = 0;
-  
+
   setInterval(() => {
     counter++;
     const isPhoto = (counter % 3 === 0);
     const particle = document.createElement("div");
-    
+
     if (isPhoto) {
       particle.className = "floating-heart floating-photo-particle";
       particle.innerHTML = `<img src="assets/background.jpeg" alt="Shravani" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5);">`;
@@ -26,12 +26,12 @@ function initParticles() {
       particle.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
       particle.style.fontSize = Math.random() * 1.5 + 0.8 + "rem";
     }
-    
+
     particle.style.left = Math.random() * 100 + "vw";
     particle.style.animationDuration = Math.random() * 4 + 6 + "s"; // 6s to 10s
-    
+
     container.appendChild(particle);
-    
+
     setTimeout(() => {
       particle.remove();
     }, 10000);
@@ -44,7 +44,7 @@ function initParticles() {
 function loadWishes() {
   const container = document.getElementById("wishes-container");
   if (!container) return;
-  
+
   // Clear any existing dummy wishes
   container.innerHTML = "";
 
@@ -57,7 +57,7 @@ function loadWishes() {
   friendsWishes.forEach(item => {
     const card = document.createElement("div");
     card.className = "wish-card glass";
-    
+
     // Add clickable styling and event listener if link exists
     if (item.link) {
       card.style.cursor = "pointer";
@@ -66,7 +66,7 @@ function loadWishes() {
         window.location.href = item.link;
       });
     }
-    
+
     const imageSrc = item.photo ? item.photo : "assets/placeholder.jpg";
     const secondImgHtml = item.secondPhoto ? `<img class="wish-avatar second-avatar" src="${item.secondPhoto}" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); margin-left: -15px;">` : '';
 
@@ -130,7 +130,7 @@ function saveWishReply(friendKey, friendName) {
     saveReplyToGitHub(friendName, text);
 
     // 3. Send reply directly to Google Sheet Webhook
-    const googleSheetWebhookUrl = "https://script.google.com/macros/s/AKfycbz_YOUR_SCRIPT_ID/exec"; // Replace with your Webhook URL
+    const googleSheetWebhookUrl = "https://script.google.com/macros/s/AKfycbyTjg-dPeRU23wr4_A6NSxrKXPca4nrVsfcnRvoltwBQHAG2s4NQpR63tt4ZykagXsj/exec"; // Replace with your Webhook URL
     fetch(googleSheetWebhookUrl, {
       method: "POST",
       mode: "no-cors",
@@ -140,7 +140,7 @@ function saveWishReply(friendKey, friendName) {
         reply: text,
         timestamp: new Date().toLocaleString()
       })
-    }).catch(err => {});
+    }).catch(err => { });
 
   } else {
     localStorage.removeItem("reply_" + friendKey);
@@ -155,27 +155,27 @@ function saveReplyToGitHub(friendName, replyText) {
   const repoOwner = "Tanuj-a-bit";
   const repoName = "HBD";
   const filePath = "shravani_replies.txt";
-  
+
   // Create reply entry line
   const timestamp = new Date().toLocaleString();
   const newEntry = `\n========================================\nTime: ${timestamp}\nFriend: ${friendName}\nReply: ${replyText}\n========================================\n`;
 
   // Fetch current file from GitHub API
   const getUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
-  
+
   fetch(getUrl)
     .then(res => res.status === 200 ? res.json() : null)
     .then(fileData => {
       let currentContent = "";
       let sha = null;
-      
+
       if (fileData) {
         currentContent = atob(fileData.content.replace(/\n/g, ''));
         sha = fileData.sha;
       } else {
         currentContent = "=== SHRAVANI'S BIRTHDAY WISH REPLIES ===\n";
       }
-      
+
       const updatedContent = currentContent + newEntry;
       const encodedContent = btoa(unescape(encodeURIComponent(updatedContent)));
 
@@ -402,7 +402,7 @@ function resetPlayfulQuestions() {
 
 function redeemCoupon(element, title) {
   if (!element || element.classList.contains("redeemed")) return;
-  
+
   element.classList.add("redeemed");
   const btn = element.querySelector(".coupon-btn");
   if (btn) {
