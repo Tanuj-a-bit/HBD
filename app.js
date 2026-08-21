@@ -130,16 +130,17 @@ function saveWishReply(friendKey, friendName) {
     saveReplyToGitHub(friendName, text);
 
     // 3. Send reply directly to Google Sheet Webhook
-    const googleSheetWebhookUrl = "https://script.google.com/macros/s/AKfycbyTjg-dPeRU23wr4_A6NSxrKXPca4nrVsfcnRvoltwBQHAG2s4NQpR63tt4ZykagXsj/exec"; // Replace with your Webhook URL
+    const googleSheetWebhookUrl = "https://script.google.com/macros/s/AKfycbyTjg-dPeRU23wr4_A6NSxrKXPca4nrVsfcnRvoltwBQHAG2s4NQpR63tt4ZykagXsj/exec";
+    const formData = new URLSearchParams();
+    formData.append("timestamp", new Date().toLocaleString());
+    formData.append("friend", friendName);
+    formData.append("reply", text);
+
     fetch(googleSheetWebhookUrl, {
       method: "POST",
       mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        friend: friendName,
-        reply: text,
-        timestamp: new Date().toLocaleString()
-      })
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString()
     }).catch(err => { });
 
   } else {
