@@ -110,6 +110,7 @@ const friendsWishes = [
   {
     name: "Arya 💫",
     wish: "Happy birthday Shravani🎉🎉! I hope u have a fantastic year ahead",
-    photo: "assets/placeholder.jpg"
+    photo: "assets/Sachin/WhatsApp Image 2026-08-21 at 9.29.18 PM.jpeg",
+    link: "sachin.html"
   }
 ];
