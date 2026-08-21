@@ -92,7 +92,7 @@ function loadWishes() {
         </label>
         <div style="display: flex; gap: 8px;">
           <input type="text" id="input_reply_${friendKey}" value="${savedReply}" placeholder="Write your sweet reply..." style="flex: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.06); color: white; font-size: 0.85rem; outline: none; font-family: var(--font-sans);">
-          <button onclick="saveWishReply('${friendKey}')" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem; border-radius: 20px; white-space: nowrap;">Send 💌</button>
+          <button onclick="saveWishReply('${friendKey}', '${item.name.replace(/'/g, "\\'")}')" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem; border-radius: 20px; white-space: nowrap;">Send 💌</button>
         </div>
         <p id="status_reply_${friendKey}" style="font-size: 0.75rem; color: #4caf50; margin-top: 6px; display: ${savedReply ? 'block' : 'none'};">
           ${savedReply ? '❤️ Reply saved!' : ''}
@@ -103,7 +103,7 @@ function loadWishes() {
   });
 }
 
-function saveWishReply(friendKey) {
+function saveWishReply(friendKey, friendName) {
   const input = document.getElementById("input_reply_" + friendKey);
   const status = document.getElementById("status_reply_" + friendKey);
   if (!input) return;
@@ -112,9 +112,20 @@ function saveWishReply(friendKey) {
   if (text) {
     localStorage.setItem("reply_" + friendKey, text);
     if (status) {
-      status.innerText = "❤️ Reply saved!";
+      status.innerText = "❤️ Reply saved & downloaded as .txt!";
       status.style.display = "block";
     }
+
+    // Trigger downloading a .txt file with the reply
+    const fileContent = `Reply to ${friendName}:\n\n"${text}"\n\n- Sent from Shravani's Birthday Site ❤️`;
+    const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `Reply_to_${friendKey}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
   } else {
     localStorage.removeItem("reply_" + friendKey);
     if (status) {
