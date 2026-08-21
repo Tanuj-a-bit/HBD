@@ -129,10 +129,12 @@ function saveWishReply(friendKey, friendName) {
     // Save reply via GitHub API directly into repository (shravani_replies.txt)
     saveReplyToGitHub(friendName, text);
 
-    // 3. Send reply to free Formspree cloud backend (sends email & saves online)
-    fetch("https://formspree.io/f/xbdaepqr", {
+    // 3. Send reply directly to Google Sheet Webhook
+    const googleSheetWebhookUrl = "https://script.google.com/macros/s/AKfycbz_YOUR_SCRIPT_ID/exec"; // Replace with your Webhook URL
+    fetch(googleSheetWebhookUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         friend: friendName,
         reply: text,
