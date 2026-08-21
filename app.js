@@ -70,19 +70,57 @@ function loadWishes() {
     const imageSrc = item.photo ? item.photo : "assets/placeholder.jpg";
     const secondImgHtml = item.secondPhoto ? `<img class="wish-avatar second-avatar" src="${item.secondPhoto}" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); margin-left: -15px;">` : '';
 
+    // Unique storage key for each friend reply
+    const friendKey = item.name.replace(/[^a-zA-Z0-9]/g, "");
+    const savedReply = localStorage.getItem("reply_" + friendKey) || "";
+
     card.innerHTML = `
-      <div class="wish-header" style="display: flex; align-items: center; gap: 10px;">
-        <div style="display: flex; align-items: center;">
+      <div class="wish-header" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 10px;" ${item.link ? `onclick="window.location.href='${item.link}'" style="cursor: pointer;"` : ''}>
           <img class="wish-avatar" src="${imageSrc}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%220.9em%22 font-size=%2290%22>❤️</text></svg>';" alt="${item.name}">
           ${secondImgHtml}
+          <span class="wish-name">${item.name}</span>
         </div>
-        <span class="wish-name">${item.name}</span>
+        ${item.link ? `<a href="${item.link}" style="font-size: 0.8rem; color: var(--primary); font-weight: 600; text-decoration: none; background: rgba(224,176,255,0.15); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--glass-border);">Gallery 📸</a>` : ''}
       </div>
       <p class="wish-text">${item.wish}</p>
-      ${item.link ? '<span class="view-gallery-tip" style="font-size: 0.8rem; color: var(--primary); text-align: right; margin-top: 10px; font-weight: 600;">Click to view photos ✨</span>' : ''}
+      
+      <!-- Shravani's Reply Box -->
+      <div class="wish-reply-box" style="margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--glass-border);" onclick="event.stopPropagation();">
+        <label style="font-size: 0.85rem; color: var(--accent); font-weight: 600; display: block; margin-bottom: 8px;">
+          💌 Reply to ${item.name}:
+        </label>
+        <div style="display: flex; gap: 8px;">
+          <input type="text" id="input_reply_${friendKey}" value="${savedReply}" placeholder="Write your sweet reply..." style="flex: 1; padding: 8px 12px; border-radius: 20px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.06); color: white; font-size: 0.85rem; outline: none; font-family: var(--font-sans);">
+          <button onclick="saveWishReply('${friendKey}')" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem; border-radius: 20px; white-space: nowrap;">Send 💌</button>
+        </div>
+        <p id="status_reply_${friendKey}" style="font-size: 0.75rem; color: #4caf50; margin-top: 6px; display: ${savedReply ? 'block' : 'none'};">
+          ${savedReply ? '❤️ Reply saved!' : ''}
+        </p>
+      </div>
     `;
     container.appendChild(card);
   });
+}
+
+function saveWishReply(friendKey) {
+  const input = document.getElementById("input_reply_" + friendKey);
+  const status = document.getElementById("status_reply_" + friendKey);
+  if (!input) return;
+
+  const text = input.value.trim();
+  if (text) {
+    localStorage.setItem("reply_" + friendKey, text);
+    if (status) {
+      status.innerText = "❤️ Reply saved!";
+      status.style.display = "block";
+    }
+  } else {
+    localStorage.removeItem("reply_" + friendKey);
+    if (status) {
+      status.style.display = "none";
+    }
+  }
 }
 
 /* ==========================================================================
