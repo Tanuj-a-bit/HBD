@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery for Nishta & Shravani ❤️</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .gallery-title {
+      font-family: var(--font-display);
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .gallery-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+    .gallery-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 8px 32px var(--glass-shadow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 147, 154, 0.4);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .back-btn-container {
+      margin-top: 20px;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid var(--primary);
+      border-radius: 30px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-back:hover {
+      background: var(--primary);
+      color: var(--bg-primary);
+    }
+    /* Modal/Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(18, 12, 21, 0.95);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      border: 2px solid var(--primary);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="particle-container"></div>
+
+  <div class="gallery-container">
+    <h1 class="gallery-title">Memories with Nishta 💖</h1>
+    <p class="gallery-subtitle">A collection of beautiful moments captured in frames.</p>
+    
+    <div class="gallery-grid">
+      <!-- Nishta's Photos -->
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/11e4f100-ed19-4166-91c1-3fa2b0e83024.JPG')"><img src="assets/Nishta/11e4f100-ed19-4166-91c1-3fa2b0e83024.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/205b0074-d689-4359-a04f-4d362556bf64.JPG')"><img src="assets/Nishta/205b0074-d689-4359-a04f-4d362556bf64.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/218a0def-5f5f-4621-a17e-f89983096793.JPG')"><img src="assets/Nishta/218a0def-5f5f-4621-a17e-f89983096793.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/3490266a-32d7-4cda-a4e6-fd410b33fb71.JPG')"><img src="assets/Nishta/3490266a-32d7-4cda-a4e6-fd410b33fb71.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/357d7b10-1b30-45ee-a3ed-5613251e8bdc.JPG')"><img src="assets/Nishta/357d7b10-1b30-45ee-a3ed-5613251e8bdc.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/39019570-b459-4d6f-8cad-81cd79407ca3.JPG')"><img src="assets/Nishta/39019570-b459-4d6f-8cad-81cd79407ca3.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/4628cf5c-7daa-4b18-ad2d-c59faf813ecc.JPG')"><img src="assets/Nishta/4628cf5c-7daa-4b18-ad2d-c59faf813ecc.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/47fb3f12-4d7f-458d-9c42-8eb062923f58.JPG')"><img src="assets/Nishta/47fb3f12-4d7f-458d-9c42-8eb062923f58.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/4df4b2a0-8634-4451-ab6f-2a3f1c585b65.JPG')"><img src="assets/Nishta/4df4b2a0-8634-4451-ab6f-2a3f1c585b65.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/5f20b810-ab2a-4d4b-919a-ad71887e831e.JPG')"><img src="assets/Nishta/5f20b810-ab2a-4d4b-919a-ad71887e831e.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/64ee84ce-7e5a-40fe-a3ec-a7b3b05a1296.JPG')"><img src="assets/Nishta/64ee84ce-7e5a-40fe-a3ec-a7b3b05a1296.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/7fdb27b6-98c4-4bff-80c0-96e7bdc6c728.JPG')"><img src="assets/Nishta/7fdb27b6-98c4-4bff-80c0-96e7bdc6c728.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/84748b99-b984-4540-91f2-e98f0f8e38a8.JPG')"><img src="assets/Nishta/84748b99-b984-4540-91f2-e98f0f8e38a8.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/893517b9-b576-4d7b-8691-44b2b2f1a360.JPG')"><img src="assets/Nishta/893517b9-b576-4d7b-8691-44b2b2f1a360.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/9bfa577f-25eb-4552-825f-013141fdfbf7.JPG')"><img src="assets/Nishta/9bfa577f-25eb-4552-825f-013141fdfbf7.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/9e8665f8-77a6-4fc5-a831-23be7e51a23e.JPG')"><img src="assets/Nishta/9e8665f8-77a6-4fc5-a831-23be7e51a23e.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/a052d272-c006-4aa5-b552-626f1d7cedb8.JPG')"><img src="assets/Nishta/a052d272-c006-4aa5-b552-626f1d7cedb8.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/aca2a4b4-bea7-4799-865a-7b6c650fe813.JPG')"><img src="assets/Nishta/aca2a4b4-bea7-4799-865a-7b6c650fe813.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/ad220791-f82b-4536-b39a-f8b7ae644672.JPG')"><img src="assets/Nishta/ad220791-f82b-4536-b39a-f8b7ae644672.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/b11be15b-1601-47de-b9b4-a597c7c6ab8d.JPG')"><img src="assets/Nishta/b11be15b-1601-47de-b9b4-a597c7c6ab8d.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/c2b0e15d-6cbd-4cc3-bdd4-012bf23b3082.JPG')"><img src="assets/Nishta/c2b0e15d-6cbd-4cc3-bdd4-012bf23b3082.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/d5b0934a-ea89-4322-89c5-5f62a2cb1428.JPG')"><img src="assets/Nishta/d5b0934a-ea89-4322-89c5-5f62a2cb1428.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/e5e393ec-5ad3-48f4-ab2f-f5eb7f60a935.JPG')"><img src="assets/Nishta/e5e393ec-5ad3-48f4-ab2f-f5eb7f60a935.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/eb190b1f-243e-469f-9cc7-a3ca2c64c638.JPG')"><img src="assets/Nishta/eb190b1f-243e-469f-9cc7-a3ca2c64c638.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/f8546a5a-f83c-4975-a2b9-9ebac70f0f3f.JPG')"><img src="assets/Nishta/f8546a5a-f83c-4975-a2b9-9ebac70f0f3f.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/Nishta/ff164ffb-72f2-44c7-a87e-35143b97fc09.JPG')"><img src="assets/Nishta/ff164ffb-72f2-44c7-a87e-35143b97fc09.JPG"></div>
+    </div>
+
+    <div class="back-btn-container">
+      <a href="index.html#wishes" class="btn-back">← Back to Wishes</a>
+    </div>
+  </div>
+
+  <!-- Lightbox Element -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Enlarged Photo">
+  </div>
+
+  <script>
+    // Particle Engine
+    const container = document.getElementById("particle-container");
+    const heartSymbols = ["❤️", "💖", "💝", "💕", "🌸"];
+    let counter = 0;
+    setInterval(() => {
+      counter++;
+      const isPhoto = (counter % 3 === 0);
+      const heart = document.createElement("div");
+      if (isPhoto) {
+        heart.className = "floating-heart floating-photo-particle";
+        heart.innerHTML = `<img src="assets/background.jpeg" alt="Shravani" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5);">`;
+      } else {
+        heart.className = "floating-heart";
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.fontSize = Math.random() * 1.5 + 0.8 + "rem";
+      }
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 4 + 6 + "s";
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 800);
+
+    // Lightbox functions
+    function openLightbox(src) {
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightbox-img");
+      lbImg.src = src;
+      lb.classList.add("active");
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+  </script>
+</body>
+</html>

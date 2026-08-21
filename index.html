@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Wonderful Shravani ❤️</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Floating Hearts Background Overlay -->
+  <div id="particle-container"></div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content glass">
+      <div class="heart-icon-wrapper">
+        <span class="heart-pulse-icon">❤️</span>
+      </div>
+      <h1 class="glow-text">Happy Birthday, Shravani!</h1>
+      <p class="subtitle">Wishing you the happiest birthday filled with joy and sweet moments. Here's a small token of
+        my love, designed just for you.</p>
+      <a href="#timeline" class="btn-primary scroll-btn">Explore Our Journey</a>
+    </div>
+  </header>
+
+  <!-- Interactive Music Player Section -->
+  <section class="section-container" id="music">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">Our Soundtrack 🎶</h2>
+      <p class="section-subtitle">Play the tunes that belong to us.</p>
+    </div>
+    <div class="music-card glass" style="flex-direction: column; gap: 25px;">
+
+      <!-- Track 1: Lavender Blue Yellow -->
+      <div
+        style="display: flex; align-items: center; gap: 20px; width: 100%; justify-content: space-between; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="vinyl-container" style="width: 70px; height: 70px;">
+            <div class="vinyl-record" id="vinyl-disc-1" style="width: 70px; height: 70px;">
+              <div class="vinyl-center" style="width: 20px; height: 20px;"></div>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family: var(--font-display); color: var(--accent); font-size: 1.3rem;">Lavender Blue Yellow
+              🌸</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Written by friends for our first date</p>
+          </div>
+        </div>
+        <audio id="bg-music-1" loop src="assets/music.mp3"></audio>
+        <button id="play-btn-1" onclick="toggleTrack('bg-music-1', 'play-btn-1', 'vinyl-disc-1')" class="control-btn"
+          style="padding: 10px 24px;">▶ Play</button>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--glass-border); width: 100%; margin: 5px 0;">
+
+      <!-- Track 2: Adi Gaapulo For You -->
+      <div
+        style="display: flex; align-items: center; gap: 20px; width: 100%; justify-content: space-between; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="vinyl-container" style="width: 70px; height: 70px;">
+            <div class="vinyl-record" id="vinyl-disc-2" style="width: 70px; height: 70px;">
+              <div class="vinyl-center" style="width: 20px; height: 20px;"></div>
+            </div>
+          </div>
+          <div>
+            <h3 style="font-family: var(--font-display); color: var(--accent); font-size: 1.3rem;">Padigapulo For You
+              🎵✨</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Our special love song</p>
+          </div>
+        </div>
+        <audio id="bg-music-2" loop src="assets/adi_gaapulo.m4a"></audio>
+        <button id="play-btn-2" onclick="toggleTrack('bg-music-2', 'play-btn-2', 'vinyl-disc-2')" class="control-btn"
+          style="padding: 10px 24px;">▶ Play</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Memory Timeline Section -->
+  <section class="section-container" id="timeline">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">Our Beautiful Memories</h2>
+      <p class="section-subtitle">A walk down memory lane...</p>
+    </div>
+
+
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content glass">
+          <div class="polaroid">
+            <img src="assets/HerPhotos/FAEB446B-A489-41B3-A055-22B6E07DCC98_1_105_c.jpeg"
+              alt="Sweet Childhood Memories">
+            <div class="polaroid-caption">Sweet little superstar! 🌟</div>
+          </div>
+          <h3>Always Spreading Joy</h3>
+          <p>Even back then, her sparkle could light up an entire room. Some things never change! 🥰</p>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-content glass">
+          <div class="polaroid">
+            <img src="assets/HerPhotos/B3B4C195-3FEE-4699-8DB6-1406BA6BF952_1_105_c.jpeg" alt="Little Shravani">
+            <div class="polaroid-caption">Cutest little princess! 👑✨</div>
+          </div>
+          <h3>Born to Shine</h3>
+          <p>Look at that adorable innocent smile! Who knew this tiny cutie pie would grow up to be the most wonderful
+            person in my life? ❤️</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-content glass" onclick="window.location.href='child1.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/child1/299707ff-9dc1-4226-867f-053be0d4e9a5.JPG" alt="Childhood Moments 1">
+            <div class="polaroid-caption">Childhood Cuteness 🍼❤️</div>
+          </div>
+          <h3>Adorable Little Shravani</h3>
+          <p>Look at these super cute childhood moments! Tap to see her cutest little photos! 🥰✨</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view childhood photos 📷✨</span>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-content glass" onclick="window.location.href='child2.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/child2/d448f06e-c0c2-44fb-bd46-c840003eaa25.JPG" alt="Childhood Moments 2">
+            <div class="polaroid-caption">Sweetest Little Girl 🌟💕</div>
+          </div>
+          <h3>Cutest Little Memories</h3>
+          <p>More precious childhood moments that make your heart melt instantly! ❤️</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view childhood photos 📷✨</span>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-content glass" onclick="window.location.href='ai.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/rememberthis/10068452-0F5A-42DA-9DD9-F04706022825_1_105_c.jpeg" alt="Remember This">
+            <div class="polaroid-caption">Do you remember this? 📸✨</div>
+          </div>
+          <h3>AI Photo Magic</h3>
+          <p>Remember when you sent me these photos back in the day to create AI-generated magic? I saved them all!
+            Haha, I don't know what I was feeling, but some are cute! 🎬❤️</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to see AI photos & pick favorites ✨</span>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-content glass">
+          <div class="polaroid">
+            <img src="assets/ask/991C68F5-6EEE-42F5-B00F-4C7B3F0D293F_1_105_c.jpeg" alt="Funny Cuteness">
+            <div class="polaroid-caption">Funny photos challenge! 😜❤️</div>
+          </div>
+          <h3>The Funny Photos Story</h3>
+          <p>Remember this? I asked you to ask Vinutha and Spoorthi to send some funny photos of yours, and you sent me
+            these cute goofy
+            ones! You're hilarious! 😂💕</p>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-content glass" onclick="window.location.href='movienights.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/movienights/3B0B48D2-E233-4686-A33B-FC85E541AC32_1_105_c.jpeg" alt="Movie Nights">
+            <div class="polaroid-caption">Cozy Movie Nights 🍿🎬</div>
+          </div>
+          <h3>Laptop Secret Snaps 💻❤️</h3>
+          <p>Oh, these iconic photos I secretly snagged from your laptop! Do you remember those cozy movie nights we
+            spent together? ✨</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view movie night photos 🍿</span>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-content glass" onclick="window.location.href='flowers.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/flowerss/128AE1E4-4CA1-407D-94F7-ABF66C100D43_1_105_c.jpeg" alt="Yellow Flower Moment">
+            <div class="polaroid-caption">The Yellow Flower 🌼💛</div>
+          </div>
+          <h3>Coy & Pretty 🌸</h3>
+          <p>Remember when I brought you that yellow flower? Somebody was acting all shy and pretending she didn't want
+            her picture clicked! 😂 You looked so cute! ❤️</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view flower photos 🌻</span>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-content glass" onclick="window.location.href='mys.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/mys/292F320A-955A-463D-9FC7-F9070C4373CF_1_105_c.jpeg" alt="Mysuru Trip">
+            <div class="polaroid-caption">Mysuru Trip & Chamundi Betta 🏰✨</div>
+          </div>
+          <h3>Unforgettable Mysuru Memories 👑</h3>
+          <p>Remember sending me these photos from Mysuru? The Chamundi Betta mirror selfie, holding flowers, Kanthi's
+            photo, and you posing so sweetly! 🥰</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view Mysuru photos 📷✨</span>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-content glass" onclick="window.location.href='daysie.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/daysie/680F8F5F-EC3C-4774-B827-9BB149B13AE8_1_105_c.jpeg" alt="First Date at DAYSIE">
+            <div class="polaroid-caption">First Date at DAYSIE ☕❤️</div>
+          </div>
+          <h3>The Day My Heart Stole Away</h3>
+          <p>These photos from DAYSIE capture the exact moment I fell for you even deeper. Our friends composed
+            'Lavender Blue Yellow' specially for our first date! My heart still flutters every time I play it! 🎶✨🥰</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view first date photos ☕✨</span>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-content glass" onclick="window.location.href='stand.html'" style="cursor: pointer;">
+          <div class="polaroid">
+            <img src="assets/stand/14DC09A3-928F-4AE5-BA93-0A45B39F8E8B.JPG" alt="Stand Properly">
+            <div class="polaroid-caption">Stand Properly, Madam! 😂📸</div>
+          </div>
+          <h3>"Madam, Stand Properly!"</h3>
+          <p>"Madam, please stand properly so I can click some good pictures!" ...and then you hit these iconic cute
+            poses! You're the best! 🥰💕</p>
+          <span
+            style="font-size: 0.85rem; color: var(--primary); font-weight: 600; display: block; margin-top: 10px; text-align: right;">Click
+            to view posing photos 📸✨</span>
+        </div>
+      </div>
+
+      <div class="timeline-item right">
+        <div class="timeline-content glass" id="locked-secret-card" style="text-align: center;">
+          <div id="lock-screen">
+            <div style="font-size: 3rem; margin-bottom: 10px;">🔒</div>
+            <h3 style="font-family: var(--font-display); color: var(--accent); margin-bottom: 10px;">Secret Love Memory
+            </h3>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">When did you tell me something
+              on the 3rd? What was the time? 🤫</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
+              <input type="text" id="secret-pass" placeholder="Enter time (HH:MM)"
+                style="padding: 10px 15px; border-radius: 20px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.08); color: white; text-align: center; width: 160px; font-family: var(--font-sans);">
+              <button onclick="unlockSecretMemory()" class="control-btn" style="padding: 10px 20px;">Unlock 🔑</button>
+            </div>
+            <p id="lock-error" style="color: #f44336; font-size: 0.85rem; display: none;">Oops! Wrong time, try again ❤️
+            </p>
+          </div>
+
+          <div id="unlocked-content" style="display: none; text-align: left;">
+            <div class="polaroid">
+              <img src="assets/love/8A2069F8-7D65-4949-9B40-0E895012EE28_1_105_c.jpeg" alt="Love Memory">
+              <div class="polaroid-caption">My Favorite Person ❤️</div>
+            </div>
+            <h3 style="font-family: var(--font-display); color: var(--accent);">Love You So Much 💖</h3>
+            <p>Love you my favorite person, love you so much!✨🥰</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item left">
+        <div class="timeline-content glass" style="text-align: center; border: 2px solid var(--primary);">
+          <div style="font-size: 3rem; margin-bottom: 10px;">👑🎂✨</div>
+          <h3 style="font-family: var(--font-display); color: var(--accent); font-size: 1.8rem; margin-bottom: 15px;">My
+            Forever Queen, Shravani ❤️</h3>
+          <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-main); margin-bottom: 20px;">
+            Every single smile, every laugh, and every memory with you is something I hold so close to my heart.
+            You make my world brighter, warmer, and so much happier just by being you! 🌸✨<br><br>
+            Happy Birthday, Shravani! May all your dreams come true today and always!
+            <strong>I love you a lot! ❤️🥰🎉</strong>
+          </p>
+          <span style="font-size: 1.4rem;">💖💝💕</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Friends' Wishes Section -->
+  <section class="section-container" id="wishes">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">Warm Wishes</h2>
+      <p class="section-subtitle">Here is what some of our favorite people had to say!</p>
+    </div>
+
+    <!-- Dynamically Populated Grid of Wishes -->
+    <div class="wishes-grid" id="wishes-container">
+      <!-- Generated by JavaScript dynamically -->
+    </div>
+  </section>
+
+  <!-- Interactive Playful Questions Section -->
+  <section class="section-container" id="quiz">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">A Few Important Questions 💕</h2>
+      <p class="section-subtitle">Answer honestly, Shravani! 😉</p>
+    </div>
+
+    <div class="quiz-card glass">
+      <div id="quiz-screen">
+        <div class="quiz-header">
+          <span class="question-number" id="q-number">Question 1 of 3</span>
+          <span class="score-display" id="q-score">Score: 0</span>
+        </div>
+        <h3 id="question-text" class="question-text">Loading question...</h3>
+        <div id="options-container" class="options-grid">
+          <!-- Button options dynamic -->
+        </div>
+        <div id="feedback-text" class="feedback-text hide">Feedback here</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Love Coupons Section -->
+  <section class="section-container" id="coupons">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">Your Special Coupons</h2>
+      <p class="section-subtitle">Redeem these whenever you like. I promise to honor them! 😉</p>
+    </div>
+
+    <div class="coupons-container">
+      <div class="coupon-card glass" onclick="redeemCoupon(this, 'Rasamalai Treat 🍨')">
+        <div class="coupon-decor">✨ Coupon ✨</div>
+        <h3 class="coupon-title">Rasamalai Treat 🍨</h3>
+        <p class="coupon-desc">Redeem for delicious Rasamalai anytime you get a sweet craving!
+        </p>
+        <span class="coupon-btn">Click to Redeem</span>
+      </div>
+
+      <div class="coupon-card glass" onclick="redeemCoupon(this, 'Listening Ear & Rant Session 👂✨')">
+        <div class="coupon-decor">✨ Coupon ✨</div>
+        <h3 class="coupon-title">Unconditional Listener 👂</h3>
+        <p class="coupon-desc">Valid for an unlimited rant or deep talk session whenever you need someone to listen.
+        </p>
+        <span class="coupon-btn">Click to Redeem</span>
+      </div>
+
+      <div class="coupon-card glass" onclick="redeemCoupon(this, 'Movie & Snack Boss 🍿')">
+        <div class="coupon-decor">✨ Coupon ✨</div>
+        <h3 class="coupon-title">Movie & Snack Boss 🍿</h3>
+        <p class="coupon-desc">You get 100% control to pick the movie and snacks for our next hang-out!
+        </p>
+        <span class="coupon-btn">Click to Redeem</span>
+      </div>
+
+      <div class="coupon-card glass" onclick="redeemCoupon(this, 'Warm Hug on Demand 🤗')">
+        <div class="coupon-decor">✨ Coupon ✨</div>
+        <h3 class="coupon-title">Warm Hug on Demand 🤗</h3>
+        <p class="coupon-desc">Redeem for a long, warm, comforting hug anytime you need one!
+        </p>
+        <span class="coupon-btn">Click to Redeem</span>
+      </div>
+
+      <div class="coupon-card glass" onclick="redeemCoupon(this, 'Holding Hands Walk 🤝')">
+        <div class="coupon-decor">✨ Coupon ✨</div>
+        <h3 class="coupon-title">Holding Hands Walk 🤝</h3>
+        <p class="coupon-desc">Redeem for a peaceful, sweet walk holding hands together.
+        </p>
+        <span class="coupon-btn">Click to Redeem</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <p>Made with ❤️ by your favorite person</p>
+    <p class="copyright">&copy; 2026. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="friends_config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

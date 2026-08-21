@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery for Vinutha & Shravani ❤️</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .gallery-title {
+      font-family: var(--font-display);
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .gallery-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+    .gallery-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 8px 32px var(--glass-shadow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 147, 154, 0.4);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .back-btn-container {
+      margin-top: 20px;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid var(--primary);
+      border-radius: 30px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-back:hover {
+      background: var(--primary);
+      color: var(--bg-primary);
+    }
+    /* Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(18, 12, 21, 0.95);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      border: 2px solid var(--primary);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="particle-container"></div>
+
+  <div class="gallery-container">
+    <h1 class="gallery-title">Memories with Vinutha 💖</h1>
+    <p class="gallery-subtitle">A collection of beautiful moments captured in frames.</p>
+    
+    <div class="gallery-grid">
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250906-WA0047.jpg')"><img src="assets/vinutha/IMG-20250906-WA0047.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/2185cb20-075c-43d5-9f68-d723ce416b97.JPG')"><img src="assets/vinutha/2185cb20-075c-43d5-9f68-d723ce416b97.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250408-WA0017.jpg')"><img src="assets/vinutha/IMG-20250408-WA0017.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250905-WA0264.jpg')"><img src="assets/vinutha/IMG-20250905-WA0264.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/ef3103d9-9a29-4306-b2c9-deb4815b89ba.JPG')"><img src="assets/vinutha/ef3103d9-9a29-4306-b2c9-deb4815b89ba.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/20250802_193641.jpg')"><img src="assets/vinutha/20250802_193641.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20240131-WA0007.jpg')"><img src="assets/vinutha/IMG-20240131-WA0007.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/56bf77a3-f400-4300-8bb2-a67ff1a77189.JPG')"><img src="assets/vinutha/56bf77a3-f400-4300-8bb2-a67ff1a77189.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/7ce14973-7e62-415e-9068-b137a1e78549.JPG')"><img src="assets/vinutha/7ce14973-7e62-415e-9068-b137a1e78549.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20251204-WA0015.jpg')"><img src="assets/vinutha/IMG-20251204-WA0015.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/bafb6f2a-af8a-478b-b94e-57cdd4b0be82.JPG')"><img src="assets/vinutha/bafb6f2a-af8a-478b-b94e-57cdd4b0be82.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/654e3b67-a185-4000-b963-1da62d4c77d7.JPG')"><img src="assets/vinutha/654e3b67-a185-4000-b963-1da62d4c77d7.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/89be63ab-ed4e-45b2-9ffd-cc77b6dc71bf.JPG')"><img src="assets/vinutha/89be63ab-ed4e-45b2-9ffd-cc77b6dc71bf.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20240802-WA0128.jpg')"><img src="assets/vinutha/IMG-20240802-WA0128.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/ab8b7167-2323-4675-989b-ddd232b4c268.JPG')"><img src="assets/vinutha/ab8b7167-2323-4675-989b-ddd232b4c268.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/20260404_143037.heic')"><img src="assets/vinutha/20260404_143037.heic"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/8b6dda27-15c1-45ba-9abc-6a4c8b551843.JPG')"><img src="assets/vinutha/8b6dda27-15c1-45ba-9abc-6a4c8b551843.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/91cc90e8-fab7-4d86-bcf9-ab62a346b5c3.JPG')"><img src="assets/vinutha/91cc90e8-fab7-4d86-bcf9-ab62a346b5c3.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/934f048e-2da9-4439-95ce-588a26310b3d.JPG')"><img src="assets/vinutha/934f048e-2da9-4439-95ce-588a26310b3d.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/299707ff-9dc1-4226-867f-053be0d4e9a5.JPG')"><img src="assets/vinutha/299707ff-9dc1-4226-867f-053be0d4e9a5.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG_20241215_212506_302.webp')"><img src="assets/vinutha/IMG_20241215_212506_302.webp"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20251011-WA0051.jpg')"><img src="assets/vinutha/IMG-20251011-WA0051.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/20250802_192054.jpg')"><img src="assets/vinutha/20250802_192054.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/28c464f5-8e9a-4221-bb31-173fc896d2c9.jpg')"><img src="assets/vinutha/28c464f5-8e9a-4221-bb31-173fc896d2c9.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250911-WA0153.jpg')"><img src="assets/vinutha/IMG-20250911-WA0153.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/acb5f646-d02a-404a-a651-edeaba4a68b0.JPG')"><img src="assets/vinutha/acb5f646-d02a-404a-a651-edeaba4a68b0.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/e08b962d-b58d-4d7d-a783-44a31548e478.JPG')"><img src="assets/vinutha/e08b962d-b58d-4d7d-a783-44a31548e478.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20251011-WA0043.jpg')"><img src="assets/vinutha/IMG-20251011-WA0043.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250911-WA0235.jpg')"><img src="assets/vinutha/IMG-20250911-WA0235.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20260816-WA0169.jpg')"><img src="assets/vinutha/IMG-20260816-WA0169.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/d448f06e-c0c2-44fb-bd46-c840003eaa25.JPG')"><img src="assets/vinutha/d448f06e-c0c2-44fb-bd46-c840003eaa25.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20241215-WA0036.jpg')"><img src="assets/vinutha/IMG-20241215-WA0036.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20241204-WA0020.jpg')"><img src="assets/vinutha/IMG-20241204-WA0020.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20241215-WA0023.jpg')"><img src="assets/vinutha/IMG-20241215-WA0023.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250309-WA0007.jpg')"><img src="assets/vinutha/IMG-20250309-WA0007.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/60a19024-6c78-4927-aa3a-3abee6d92c46.JPG')"><img src="assets/vinutha/60a19024-6c78-4927-aa3a-3abee6d92c46.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/2fa2f820-26a7-4fd4-bb3e-5d9b41fcc650.JPG')"><img src="assets/vinutha/2fa2f820-26a7-4fd4-bb3e-5d9b41fcc650.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/bb622e44-9987-4a50-a25c-b81a89fbbb44.JPG')"><img src="assets/vinutha/bb622e44-9987-4a50-a25c-b81a89fbbb44.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20241211-WA0005.jpg')"><img src="assets/vinutha/IMG-20241211-WA0005.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20240620-WA0196.jpg')"><img src="assets/vinutha/IMG-20240620-WA0196.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/20260404_125509.heic')"><img src="assets/vinutha/20260404_125509.heic"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/ce064df0-d7be-41e7-8d56-adc0c499621d.JPG')"><img src="assets/vinutha/ce064df0-d7be-41e7-8d56-adc0c499621d.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/e041bc83-1438-4222-a973-cf9a9c11a7b6.JPG')"><img src="assets/vinutha/e041bc83-1438-4222-a973-cf9a9c11a7b6.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250911-WA0118.jpg')"><img src="assets/vinutha/IMG-20250911-WA0118.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/977b00d1-86b6-4a0f-b657-91483cd117e0.JPG')"><img src="assets/vinutha/977b00d1-86b6-4a0f-b657-91483cd117e0.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/73bb5744-5b17-4107-883c-3a498018486b.JPG')"><img src="assets/vinutha/73bb5744-5b17-4107-883c-3a498018486b.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/64c96fdf-30e5-4b62-b0ce-c3e8924d399a.JPG')"><img src="assets/vinutha/64c96fdf-30e5-4b62-b0ce-c3e8924d399a.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250905-WA0250.jpg')"><img src="assets/vinutha/IMG-20250905-WA0250.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250408-WA0023.jpg')"><img src="assets/vinutha/IMG-20250408-WA0023.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20251011-WA0035.jpg')"><img src="assets/vinutha/IMG-20251011-WA0035.jpg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/11516322-a0ee-4e0b-915a-ecded8e1980a.JPG')"><img src="assets/vinutha/11516322-a0ee-4e0b-915a-ecded8e1980a.JPG"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/vinutha/e4a81f24-9ffa-4a46-ae56-3b5d0a71e9a0.JPG')"><img src="assets/vinutha/e4a81f24-9ffa-4a46-ae56-3b5d0a71e9a0.JPG"></div>
+    </div>
+
+    <div class="back-btn-container">
+      <a href="index.html#wishes" class="btn-back">← Back to Wishes</a>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Enlarged Photo">
+  </div>
+
+  <script>
+    // Particle Engine
+    const container = document.getElementById("particle-container");
+    const heartSymbols = ["❤️", "💖", "💝", "💕", "🌸"];
+    let counter = 0;
+    setInterval(() => {
+      counter++;
+      const isPhoto = (counter % 3 === 0);
+      const heart = document.createElement("div");
+      if (isPhoto) {
+        heart.className = "floating-heart floating-photo-particle";
+        heart.innerHTML = `<img src="assets/background.jpeg" alt="Shravani" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5);">`;
+      } else {
+        heart.className = "floating-heart";
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.fontSize = Math.random() * 1.5 + 0.8 + "rem";
+      }
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 4 + 6 + "s";
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 800);
+
+    function openLightbox(src) {
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightbox-img");
+      lbImg.src = src;
+      lb.classList.add("active");
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+  </script>
+</body>
+</html>

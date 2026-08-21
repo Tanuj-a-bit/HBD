@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our First Date at DAYSIE ☕❤️</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gallery-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .gallery-title {
+      font-family: var(--font-display);
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .gallery-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+    .gallery-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 8px 32px var(--glass-shadow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 147, 154, 0.4);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .back-btn-container {
+      margin-top: 20px;
+    }
+    .btn-back {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid var(--primary);
+      border-radius: 30px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .btn-back:hover {
+      background: var(--primary);
+      color: var(--bg-primary);
+    }
+    /* Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(18, 12, 21, 0.95);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      border: 2px solid var(--primary);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="particle-container"></div>
+
+  <div class="gallery-container">
+    <h1 class="gallery-title">First Date at DAYSIE ☕❤️</h1>
+    <p class="gallery-subtitle">These are the unforgettable photos we clicked on our very first date at DAYSIE! I still remember every single detail and how butterfly-filled my heart felt that day. ✨🥰</p>
+    
+    <!-- Music Player Card -->
+    <div class="glass" style="padding: 15px 25px; margin: 0 auto 30px auto; max-width: 400px; display: flex; align-items: center; justify-content: space-between; border-radius: 30px;">
+      <span style="font-weight: 600; color: var(--accent);">🎵 Lavender Blue Yellow</span>
+      <audio id="daysie-audio" src="assets/daysie_song.mp3" loop></audio>
+      <button onclick="toggleDaysieAudio(this)" class="control-btn" style="padding: 8px 18px; font-size: 0.9rem;">▶ Play Song</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Daysie Photos -->
+      <div class="gallery-card" onclick="openLightbox('assets/daysie/680F8F5F-EC3C-4774-B827-9BB149B13AE8_1_105_c.jpeg')"><img src="assets/daysie/680F8F5F-EC3C-4774-B827-9BB149B13AE8_1_105_c.jpeg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/daysie/A668A3DB-B103-4FE4-8F15-5DF26C152826_1_105_c.jpeg')"><img src="assets/daysie/A668A3DB-B103-4FE4-8F15-5DF26C152826_1_105_c.jpeg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/daysie/D0DC0DB0-1B72-4B50-B006-A1CDC94249C8_1_105_c.jpeg')"><img src="assets/daysie/D0DC0DB0-1B72-4B50-B006-A1CDC94249C8_1_105_c.jpeg"></div>
+      <div class="gallery-card" onclick="openLightbox('assets/daysie/F0C4CB54-50E9-4F5D-8528-AB4BD360F89F_1_105_c.jpeg')"><img src="assets/daysie/F0C4CB54-50E9-4F5D-8528-AB4BD360F89F_1_105_c.jpeg"></div>
+    </div>
+
+    <div class="back-btn-container">
+      <a href="index.html#timeline" class="btn-back">← Back to Timeline</a>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Enlarged Photo">
+  </div>
+
+  <script>
+    // Particle Engine
+    const container = document.getElementById("particle-container");
+    const heartSymbols = ["❤️", "💖", "💝", "💕", "🌸"];
+    let counter = 0;
+    setInterval(() => {
+      counter++;
+      const isPhoto = (counter % 3 === 0);
+      const heart = document.createElement("div");
+      if (isPhoto) {
+        heart.className = "floating-heart floating-photo-particle";
+        heart.innerHTML = `<img src="assets/background.jpeg" alt="Shravani" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.5);">`;
+      } else {
+        heart.className = "floating-heart";
+        heart.innerText = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+        heart.style.fontSize = Math.random() * 1.5 + 0.8 + "rem";
+      }
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 4 + 6 + "s";
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }, 800);
+
+    function openLightbox(src) {
+      const lb = document.getElementById("lightbox");
+      const lbImg = document.getElementById("lightbox-img");
+      lbImg.src = src;
+      lb.classList.add("active");
+    }
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+  </script>
+</body>
+</html>
