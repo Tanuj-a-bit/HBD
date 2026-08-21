@@ -76,5 +76,11 @@ const friendsWishes = [
     wish: "Happy Birthday! 🎉 Hope you have a really great day and an even better year ahead. You've been someone who's easy to talk to and fun to be around. Wishing you lots of happiness and good memories!",
     photo: "assets/Dhruthi/PHOTO-2026-08-21-20-51-17 2.jpg",
     link: "dhruthi.html"
+  },
+  {
+    name: "Lalita 💐✨",
+    wish: "Happy Birthday, Shravani! 🎂💐\nMay God bless you with endless happiness, prosperity, and success. 🎁✨ Wishing you a wonderful year ahead filled with lots of victories, beautiful memories, and love. ❤️ May all your dreams come true! 🌸",
+    photo: "assets/Lalita/image.png",
+    link: "lalita.html"
   }
 ];
