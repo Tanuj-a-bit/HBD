@@ -322,3 +322,42 @@ function unlockSecretMemory() {
     errorMsg.style.display = "block";
   }
 }
+
+/* ==========================================================================
+   GLOBAL SITE PASSCODE PROTECTION
+   ========================================================================== */
+function checkSitePasscode() {
+  const input = document.getElementById("site-passcode-input");
+  const gate = document.getElementById("site-passcode-gate");
+  const errorMsg = document.getElementById("site-passcode-error");
+
+  if (!input) return;
+
+  const val = input.value.trim().replace(/\s+/g, "").toLowerCase();
+
+  // Accept passwords: "shravani", "12:50", "1250", "shravu"
+  if (val === "shravani" || val === "12:50" || val === "1250" || val === "shravu" || val === "12.50") {
+    sessionStorage.setItem("site_unlocked", "true");
+    if (gate) gate.style.display = "none";
+    if (errorMsg) errorMsg.style.display = "none";
+  } else {
+    if (errorMsg) errorMsg.style.display = "block";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const gate = document.getElementById("site-passcode-gate");
+  if (gate) {
+    if (sessionStorage.getItem("site_unlocked") === "true") {
+      gate.style.display = "none";
+    } else {
+      gate.style.display = "flex";
+      const input = document.getElementById("site-passcode-input");
+      if (input) {
+        input.addEventListener("keyup", (e) => {
+          if (e.key === "Enter") checkSitePasscode();
+        });
+      }
+    }
+  }
+});

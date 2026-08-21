@@ -118,6 +118,13 @@
       cursor: pointer;
     }
   </style>
+
+  <script>
+    if (sessionStorage.getItem("site_unlocked") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+
 </head>
 <body>
   

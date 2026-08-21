@@ -17,6 +17,18 @@
 
 <body>
 
+  <!-- Site Passcode Protection Gate -->
+  <div id="site-passcode-gate" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #120c15; z-index: 9999; display: flex; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+    <div class="glass" style="max-width: 450px; width: 100%; padding: 40px 30px; border-radius: 24px; border: 1px solid var(--primary); box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+      <div style="font-size: 3.5rem; margin-bottom: 15px;">🔒✨</div>
+      <h2 style="font-family: var(--font-display); color: var(--accent); font-size: 2rem; margin-bottom: 10px;">Private Birthday Surprise</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">Enter the passcode to unlock Shravani's Birthday Website ❤️</p>
+      <input type="password" id="site-passcode-input" placeholder="Enter Secret Passcode..." style="width: 100%; padding: 14px 20px; border-radius: 30px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.08); color: white; text-align: center; font-size: 1.1rem; margin-bottom: 15px; outline: none; font-family: var(--font-sans);">
+      <button onclick="checkSitePasscode()" class="btn-primary" style="width: 100%; padding: 12px; font-weight: 700; border-radius: 30px;">Unlock Website 🔑</button>
+      <p id="site-passcode-error" style="color: #f44336; font-size: 0.9rem; margin-top: 15px; display: none;">Incorrect passcode! Try again ❤️</p>
+    </div>
+  </div>
+
   <!-- Floating Hearts Background Overlay -->
   <div id="particle-container"></div>
 
