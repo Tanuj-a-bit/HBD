@@ -82,5 +82,34 @@ const friendsWishes = [
     wish: "Happy Birthday, Shravani! 🎂💐\nMay God bless you with endless happiness, prosperity, and success. 🎁✨ Wishing you a wonderful year ahead filled with lots of victories, beautiful memories, and love. ❤️ May all your dreams come true! 🌸",
     photo: "assets/Lalita/image.png",
     link: "lalita.html"
+  },
+  {
+    name: "Vijetha 💗",
+    wish: "Happy birthday shravs💗\nI love you so much and I miss ya",
+    photo: "assets/Vijetha/vijetha.jpg",
+    link: "vijetha.html"
+  },
+  {
+    name: "Shriya 🫶✨",
+    wish: "Chavnii\nWishing u happy happy burdayyy.. my lab partner, exam partner and ofc partner in lab crime 😂🫠\n55 56 is something which I’ll never forget.. I feel we survived all chaos together bcoz of our calm spirit and we aced in almost everything!!\nlotzz of loveee from chia to chavnii🫶🫶🫂",
+    photo: "assets/Shriya/WhatsApp Image 2026-08-21 at 9.29.52 PM (2).jpeg",
+    link: "shriya.html"
+  },
+  {
+    name: "Neya 💖",
+    wish: "Hey shravaniiiiii,\nGlad to have found you as a friend. You are a valuable resource yourself and hence have amazingly lead a team\nYou’re academically smart and an even better person by heart and hope you know that by now\nI wish you good health and happiness forever\n🥂 to more gossiping, bitching and living through this friendship. Looovee youuu",
+    photo: "assets/Neya/WhatsApp Image 2026-08-21 at 9.40.48 PM.jpeg",
+    link: "neya.html"
+  },
+  {
+    name: "Sachin ✨",
+    wish: "Many more happy returns of the day, Shravani! ✨\nThe silent one in a group full of chaos and chatter.\nMay this new year of your life bring you countless reasons to smile, and may every dream you carry silently in your heart find its way into reality.\nStay the same.\nHappy Birthday!",
+    photo: "assets/Sachin/WhatsApp Image 2026-08-21 at 9.29.18 PM.jpeg",
+    link: "sachin.html"
+  },
+  {
+    name: "Arya 💫",
+    wish: "Happy birthday Shravani🎉🎉! I hope u have a fantastic year ahead",
+    photo: "assets/placeholder.jpg"
   }
 ];
