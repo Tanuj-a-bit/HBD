@@ -126,16 +126,15 @@ function saveWishReply(friendKey, friendName) {
     link.click();
     document.body.removeChild(link);
 
-    // 2. Send reply to Backend API server to save to shravani_replies.txt
+    // Save reply via GitHub API directly into repository (shravani_replies.txt)
+    saveReplyToGitHub(friendName, text);
+
+    // Send to local backend server if running
     fetch("http://localhost:3000/api/save-reply", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ friendKey: friendKey, friendName: friendName, reply: text })
-    }).then(res => res.json()).then(data => {
-      console.log("Backend response:", data);
-    }).catch(err => {
-      console.log("Backend offline or not reachable:", err);
-    });
+    }).catch(err => {});
 
   } else {
     localStorage.removeItem("reply_" + friendKey);
@@ -143,6 +142,53 @@ function saveWishReply(friendKey, friendName) {
       status.style.display = "none";
     }
   }
+}
+
+/* Save reply directly to GitHub repository */
+function saveReplyToGitHub(friendName, replyText) {
+  const repoOwner = "Tanuj-a-bit";
+  const repoName = "HBD";
+  const filePath = "shravani_replies.txt";
+  
+  // Create reply entry line
+  const timestamp = new Date().toLocaleString();
+  const newEntry = `\n========================================\nTime: ${timestamp}\nFriend: ${friendName}\nReply: ${replyText}\n========================================\n`;
+
+  // Fetch current file from GitHub API
+  const getUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
+  
+  fetch(getUrl)
+    .then(res => res.status === 200 ? res.json() : null)
+    .then(fileData => {
+      let currentContent = "";
+      let sha = null;
+      
+      if (fileData) {
+        currentContent = atob(fileData.content.replace(/\n/g, ''));
+        sha = fileData.sha;
+      } else {
+        currentContent = "=== SHRAVANI'S BIRTHDAY WISH REPLIES ===\n";
+      }
+      
+      const updatedContent = currentContent + newEntry;
+      const encodedContent = btoa(unescape(encodeURIComponent(updatedContent)));
+
+      const payload = {
+        message: `Add reply to ${friendName} via website`,
+        content: encodedContent
+      };
+      if (sha) payload.sha = sha;
+
+      // Note: If you add a Fine-Grained GitHub Token here, GitHub will auto-commit replies seamlessly!
+      return fetch(getUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+    })
+    .catch(err => console.log("GitHub API update notice:", err));
 }
 
 /* ==========================================================================
