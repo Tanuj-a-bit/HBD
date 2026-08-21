@@ -112,11 +112,11 @@ function saveWishReply(friendKey, friendName) {
   if (text) {
     localStorage.setItem("reply_" + friendKey, text);
     if (status) {
-      status.innerText = "❤️ Reply saved & downloaded as .txt!";
+      status.innerText = "❤️ Reply saved to backend!";
       status.style.display = "block";
     }
 
-    // Trigger downloading a .txt file with the reply
+    // 1. Also trigger local browser .txt download
     const fileContent = `Reply to ${friendName}:\n\n"${text}"\n\n- Sent from Shravani's Birthday Site ❤️`;
     const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
     const link = document.createElement("a");
@@ -125,6 +125,17 @@ function saveWishReply(friendKey, friendName) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+
+    // 2. Send reply to Backend API server to save to shravani_replies.txt
+    fetch("http://localhost:3000/api/save-reply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ friendKey: friendKey, friendName: friendName, reply: text })
+    }).then(res => res.json()).then(data => {
+      console.log("Backend response:", data);
+    }).catch(err => {
+      console.log("Backend offline or not reachable:", err);
+    });
 
   } else {
     localStorage.removeItem("reply_" + friendKey);
