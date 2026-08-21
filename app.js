@@ -129,11 +129,15 @@ function saveWishReply(friendKey, friendName) {
     // Save reply via GitHub API directly into repository (shravani_replies.txt)
     saveReplyToGitHub(friendName, text);
 
-    // Send to local backend server if running
-    fetch("http://localhost:3000/api/save-reply", {
+    // 3. Send reply to free Formspree cloud backend (sends email & saves online)
+    fetch("https://formspree.io/f/xbdaepqr", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ friendKey: friendKey, friendName: friendName, reply: text })
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        friend: friendName,
+        reply: text,
+        timestamp: new Date().toLocaleString()
+      })
     }).catch(err => {});
 
   } else {
