@@ -112,5 +112,11 @@ const friendsWishes = [
     wish: "Happy birthday Shravani🎉🎉! I hope u have a fantastic year ahead",
     photo: "assets/Sachin/WhatsApp Image 2026-08-21 at 9.29.18 PM.jpeg",
     link: "sachin.html"
+  },
+  {
+    name: "Nidhi 💗☀️",
+    wish: "Shravani \nNenu Nidhi 🤪😂 \n\nStarting with happyy birthdayyy Shravani 💗 \nOne of the things im grateful for hockey is making us meet and us becoming friends \n\nIdts playing all the games lmao would be as fun if it weren't for you and us bickering for ntg lol \n\nYou are genuinely the sweetest , cutest person \nYou are such a hardworking person \nYou're so smart its sexy \nYou're soo kind its sexy \nYou're so patient its sexy \nYou're soo prettyy its sexy lol \n\nSo conclusion \nYou're a really sexy person \nI hope u continue being sexy 🤪 \n\nI hope you get to do all the things u want in life and achieve all the heights \n\nHappy 21 shravaniiiii 💗☀️☀️",
+    photo: "assets/Nidhi/IMG_8183.JPG",
+    link: "nidhi.html"
   }
 ];
