@@ -26,6 +26,22 @@
       color: var(--text-muted);
       margin-bottom: 40px;
     }
+    .wish-note-card {
+      background: var(--glass-bg);
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 0 auto 40px auto;
+      max-width: 600px;
+      box-shadow: 0 10px 40px var(--glass-shadow);
+    }
+    .wish-note-card img {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -118,7 +134,14 @@
 
   <div class="gallery-container">
     <h1 class="gallery-title">Memories with Vinutha 💖</h1>
-    <p class="gallery-subtitle">A collection of beautiful moments captured in frames.</p>
+    <p class="gallery-subtitle">Special handwritten note & memories captured together! 💌✨</p>
+
+    <!-- Handwritten Wish Note Card -->
+    <div class="wish-note-card">
+      <h3 style="font-family: var(--font-display); color: var(--accent); margin-bottom: 15px;">Handwritten Note from Vinutha 💌</h3>
+      <img src="assets/vinutha/8a394482-c4a9-4ce9-bc6c-56dee8aa9192.JPG" onclick="openLightbox('assets/vinutha/8a394482-c4a9-4ce9-bc6c-56dee8aa9192.JPG')" style="cursor: pointer;" alt="Handwritten Wish Note">
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 10px;">Tap image to enlarge note 🔍</p>
+    </div>
     
     <div class="gallery-grid">
       <div class="gallery-card" onclick="openLightbox('assets/vinutha/IMG-20250906-WA0047.jpg')"><img src="assets/vinutha/IMG-20250906-WA0047.jpg"></div>
