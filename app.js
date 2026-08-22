@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadWishes();
   initMusicPlayer();
   initQuiz();
+  initCoupons();
 });
 
 /* ==========================================================================
@@ -401,16 +402,61 @@ function resetPlayfulQuestions() {
   renderPlayfulQuestion();
 }
 
+function initCoupons() {
+  const redeemedCoupons = JSON.parse(localStorage.getItem("redeemed_coupons") || "[]");
+  document.querySelectorAll(".coupon-card").forEach(card => {
+    const titleAttr = card.getAttribute("onclick");
+    if (!titleAttr) return;
+    const match = titleAttr.match(/'([^']+)'/);
+    if (match && match[1]) {
+      const title = match[1];
+      if (redeemedCoupons.includes(title)) {
+        card.classList.add("redeemed");
+        card.style.pointerEvents = "none";
+        const btn = card.querySelector(".coupon-btn");
+        if (btn) {
+          btn.innerText = "Redeemed 🎉";
+          btn.style.background = "var(--primary)";
+          btn.style.color = "var(--bg-primary)";
+        }
+      }
+    }
+  });
+}
+
 function redeemCoupon(element, title) {
   if (!element || element.classList.contains("redeemed")) return;
 
+  // 1. Mark UI as redeemed & disable clicking
   element.classList.add("redeemed");
+  element.style.pointerEvents = "none";
   const btn = element.querySelector(".coupon-btn");
   if (btn) {
     btn.innerText = "Redeemed 🎉";
     btn.style.background = "var(--primary)";
     btn.style.color = "var(--bg-primary)";
   }
+
+  // 2. Save redeemed coupon to localStorage (persists even across refresh)
+  const redeemedCoupons = JSON.parse(localStorage.getItem("redeemed_coupons") || "[]");
+  if (!redeemedCoupons.includes(title)) {
+    redeemedCoupons.push(title);
+    localStorage.setItem("redeemed_coupons", JSON.stringify(redeemedCoupons));
+  }
+
+  // 3. Log coupon redemption into Google Sheet Webhook
+  const googleSheetWebhookUrl = "https://script.google.com/macros/s/AKfycbyTjg-dPeRU23wr4_A6NSxrKXPca4nrVsfcnRvoltwBQHAG2s4NQpR63tt4ZykagXsj/exec";
+  const formData = new URLSearchParams();
+  formData.append("timestamp", new Date().toLocaleString());
+  formData.append("friend", "COUPON REDEEMED");
+  formData.append("reply", `Shravani redeemed coupon: "${title}" 🎁✨`);
+
+  fetch(googleSheetWebhookUrl, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: formData.toString()
+  }).catch(err => { });
 }
 
 /* ==========================================================================
